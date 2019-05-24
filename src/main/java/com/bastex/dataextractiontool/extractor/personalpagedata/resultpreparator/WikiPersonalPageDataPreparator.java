@@ -30,15 +30,15 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
 
     @Override
     public ImmutableCollection<PersonalPageDataTO> preparePersonalPageData(Collection<WikiSearchResultTO> searchResultFromWiki) {
-        ImmutableCollection<PersonalPageDataTO> extractedPersonDataTO = ImmutableList.of();
+        ImmutableCollection<PersonalPageDataTO> extractedPersonalPageDataTO = ImmutableList.of();
 
         if (!CollectionUtils.isEmpty(searchResultFromWiki)) {
-            extractedPersonDataTO = searchResultFromWiki.stream().filter(searchResult -> BORN_WITH_YEAR_REGEX_PATTERN.matcher(searchResult.getSnippet()).find())
+            extractedPersonalPageDataTO = searchResultFromWiki.stream().filter(searchResult -> BORN_WITH_YEAR_REGEX_PATTERN.matcher(searchResult.getSnippet()).find())
                     .map(this::convertWikiSeachResultToPersonalPageData)
                     .collect(ImmutableList.toImmutableList());
         }
 
-        return extractedPersonDataTO;
+        return extractedPersonalPageDataTO;
     }
 
     private PersonalPageDataTO convertWikiSeachResultToPersonalPageData(WikiSearchResultTO searchResultTO) {
