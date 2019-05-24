@@ -5,7 +5,7 @@ import com.google.common.collect.ImmutableCollection;
 
 import java.util.Collection;
 /**
- * Prepares ExtractedPersonDataTOs based on data gather from the external source.
+ * Prepares PersonalPageDataTOs based on data gathered from the external source.
  *
  * @author Sebastian Nowak
  * @createdAt 24.05.2019
