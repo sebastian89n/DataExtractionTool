@@ -13,9 +13,9 @@ public class DataExtractionToolApp {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringMainConfiguration.class);
-        IPersonalPageDataExtractor personDataExtractor = BeanFactoryAnnotationUtils.qualifiedBeanOfType(applicationContext.getBeanFactory(), IPersonalPageDataExtractor.class, "wikipedia");
+        IPersonalPageDataExtractor personalPageDataExtractor = BeanFactoryAnnotationUtils.qualifiedBeanOfType(applicationContext.getBeanFactory(), IPersonalPageDataExtractor.class, "wikipedia");
 
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = personDataExtractor.extractDataForName(args[0], args[1]);
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = personalPageDataExtractor.extractDataForName(args[0], args[1]);
 
         String logForDisplay = personalPageDataTOs.stream().map(PersonalPageDataTO::toString)
                 .collect(Collectors.joining("\n"));
