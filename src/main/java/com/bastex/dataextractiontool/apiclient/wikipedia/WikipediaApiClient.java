@@ -20,7 +20,7 @@ import java.util.Optional;
 @Service
 @Primary
 @PropertySource("classpath:application.properties")
-public class WikipediaApiClient implements IWikipediaApiClient{
+class WikipediaApiClient implements IWikipediaApiClient{
     private static final List<JacksonJaxbJsonProvider> JACKSON_JAXB_JSON_PROVIDERS = Lists.newArrayList(new JacksonJaxbJsonProvider());
 
     // Could have been configured in any other way.
