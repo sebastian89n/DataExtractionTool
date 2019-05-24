@@ -34,14 +34,14 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
 
         if (!CollectionUtils.isEmpty(searchResultFromWiki)) {
             extractedPersonDataTO = searchResultFromWiki.stream().filter(searchResult -> BORN_WITH_YEAR_REGEX_PATTERN.matcher(searchResult.getSnippet()).find())
-                    .map(this::convertWikiSeachResultToPersonPageData)
+                    .map(this::convertWikiSeachResultToPersonalPageData)
                     .collect(ImmutableList.toImmutableList());
         }
 
         return extractedPersonDataTO;
     }
 
-    private PersonalPageDataTO convertWikiSeachResultToPersonPageData(WikiSearchResultTO searchResultTO) {
+    private PersonalPageDataTO convertWikiSeachResultToPersonalPageData(WikiSearchResultTO searchResultTO) {
         Matcher matcher = BORN_WITH_YEAR_REGEX_PATTERN.matcher(searchResultTO.getSnippet());
         LocalDate birthYear = obtainYearOfBirth(matcher);
 
