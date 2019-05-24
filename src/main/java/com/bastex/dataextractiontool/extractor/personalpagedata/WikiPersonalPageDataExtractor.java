@@ -29,7 +29,7 @@ class WikiPersonalPageDataExtractor implements IPersonalPageDataExtractor {
     @Override
     public ImmutableCollection<PersonalPageDataTO> extractDataForName(@NonNull String firstName, @NonNull String lastName) {
         Collection<WikiSearchResultTO> searchResultData = executeApiQuery(firstName, lastName);
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = wikiPersonalPageDataPreparator.preparePersonData(searchResultData);
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = wikiPersonalPageDataPreparator.preparePersonalPageData(searchResultData);
         return personalPageDataTOs;
     }
 

@@ -18,19 +18,19 @@ public class WikiPersonalPageDataPreparatorTest {
     private static final WikiPersonalPageDataPreparator WIKI_PERSONAL_PAGE_DATA_PREPARATOR = new WikiPersonalPageDataPreparator(DATE_UTILS);
 
     @Test
-    public void preparePersonData_SearchResultsAreNull_ShouldReturnEmptyImmutableCollection() {
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonData(null);
+    public void preparePersonalPageData_SearchResultsAreNull_ShouldReturnEmptyImmutableCollection() {
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonalPageData(null);
         Assert.assertNotNull(personalPageDataTOs);
     }
 
     @Test
-    public void preparePersonData_SearchResultsAreEmpty_ShouldReturnEmptyImmutableCollection() {
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonData(Collections.emptyList());
+    public void preparePersonalPageData_SearchResultsAreEmpty_ShouldReturnEmptyImmutableCollection() {
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonalPageData(Collections.emptyList());
         Assert.assertNotNull(personalPageDataTOs);
     }
 
     @Test
-    public void preparePersonData_SearchResultsExistsButWithoutBornAndYear_ShouldReturnEmptyImmutableCollection() {
+    public void preparePersonalPageData_SearchResultsExistsButWithoutBornAndYear_ShouldReturnEmptyImmutableCollection() {
         List<WikiSearchResultTO> wikiSearchResults = Lists.newArrayList();
 
         for (long i = 0; i <= 5; i++) {
@@ -44,14 +44,14 @@ public class WikiPersonalPageDataPreparatorTest {
             wikiSearchResults.add(wikiSearchResultTO);
         }
 
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonData(wikiSearchResults);
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonalPageData(wikiSearchResults);
 
         Assert.assertNotNull(personalPageDataTOs);
         Assert.assertThat(personalPageDataTOs.size(), Is.is(0));
     }
 
     @Test
-    public void preparePersonData_SearchResultsExistsWithOneResultsWithBornAndDate_ShouldReturnSinglePersonPageTO() {
+    public void preparePersonalPageData_SearchResultsExistsWithOneResultsWithBornAndDate_ShouldReturnSinglePersonPageTO() {
         List<WikiSearchResultTO> wikiSearchResults = Lists.newArrayList();
 
         for (long i = 0; i <= 5; i++) {
@@ -74,14 +74,14 @@ public class WikiPersonalPageDataPreparatorTest {
 
         wikiSearchResults.add(wikiSearchResultWithBornAndDate);
 
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonData(wikiSearchResults);
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonalPageData(wikiSearchResults);
 
         Assert.assertNotNull(personalPageDataTOs);
         Assert.assertThat(personalPageDataTOs.size(), Is.is(1));
     }
 
     @Test
-    public void preparePersonData_SearchResultsExistsWithOneResultsWithBornAndDate_TestCaseInsensitivityForStringMatching() {
+    public void preparePersonalPageData_SearchResultsExistsWithOneResultsWithBornAndDate_TestCaseInsensitivityForStringMatching() {
         List<WikiSearchResultTO> wikiSearchResults = Lists.newArrayList();
 
         for (long i = 0; i <= 5; i++) {
@@ -104,7 +104,7 @@ public class WikiPersonalPageDataPreparatorTest {
 
         wikiSearchResults.add(wikiSearchResultWithBornAndDate);
 
-        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonData(wikiSearchResults);
+        ImmutableCollection<PersonalPageDataTO> personalPageDataTOs = WIKI_PERSONAL_PAGE_DATA_PREPARATOR.preparePersonalPageData(wikiSearchResults);
 
         Assert.assertNotNull(personalPageDataTOs);
         Assert.assertThat(personalPageDataTOs.size(), Is.is(1));

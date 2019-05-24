@@ -46,6 +46,6 @@ public class WikiPersonalPageDataExtractorTest {
     public void extractDataForName_BothFirstAndLastNameAreSpecified_VerifyMethodInvocations() {
         wikiPersonalPageDataExtractor.extractDataForName(FIRST_NAME_SAMPLE, LAST_NAME_SAMPLE);
         Mockito.verify(wikipediaApiClient, Mockito.times(1)).performSearchQuery(Mockito.anyString());
-        Mockito.verify(wikiPersonalPageDataPreparator, Mockito.times(1)).preparePersonData(Mockito.any());
+        Mockito.verify(wikiPersonalPageDataPreparator, Mockito.times(1)).preparePersonalPageData(Mockito.any());
     }
 }

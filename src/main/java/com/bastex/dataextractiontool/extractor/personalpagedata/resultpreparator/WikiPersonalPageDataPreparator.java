@@ -29,7 +29,7 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
     }
 
     @Override
-    public ImmutableCollection<PersonalPageDataTO> preparePersonData(Collection<WikiSearchResultTO> searchResultFromWiki) {
+    public ImmutableCollection<PersonalPageDataTO> preparePersonalPageData(Collection<WikiSearchResultTO> searchResultFromWiki) {
         ImmutableCollection<PersonalPageDataTO> extractedPersonDataTO = ImmutableList.of();
 
         if (!CollectionUtils.isEmpty(searchResultFromWiki)) {

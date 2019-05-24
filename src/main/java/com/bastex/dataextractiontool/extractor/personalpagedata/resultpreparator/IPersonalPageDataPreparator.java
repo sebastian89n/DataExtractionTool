@@ -11,5 +11,5 @@ import java.util.Collection;
  * @createdAt 24.05.2019
  */
 public interface IPersonalPageDataPreparator<T> {
-    ImmutableCollection<PersonalPageDataTO> preparePersonData(Collection<T> data);
+    ImmutableCollection<PersonalPageDataTO> preparePersonalPageData(Collection<T> data);
 }
