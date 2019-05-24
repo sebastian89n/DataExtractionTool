@@ -20,19 +20,11 @@ public class DateUtilsTest {
 
     @Test(expected = DateTimeParseException.class)
     public void parseYearToLocalDate_YearIsRandomString_ShouldThrowDateTimeParseException() {
-        LocalDate localDate = DATE_UTILS.parseYearToLocalDate("asdasda");
-        int year = localDate.getYear();
-
-        Assert.assertNotNull(localDate);
-        Assert.assertEquals(1989, year);
+        DATE_UTILS.parseYearToLocalDate("asdasda");
     }
 
     @Test(expected = NullPointerException.class)
     public void parseYearToLocalDate_YearIsNull_ShouldThrowNPE() {
-        LocalDate localDate = DATE_UTILS.parseYearToLocalDate(null);
-        int year = localDate.getYear();
-
-        Assert.assertNotNull(localDate);
-        Assert.assertEquals(1989, year);
+        DATE_UTILS.parseYearToLocalDate(null);
     }
 }
