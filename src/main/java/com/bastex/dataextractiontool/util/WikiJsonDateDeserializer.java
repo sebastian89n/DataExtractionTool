@@ -1,7 +1,6 @@
 package com.bastex.dataextractiontool.util;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -22,7 +21,7 @@ public class WikiJsonDateDeserializer extends JsonDeserializer<LocalDateTime> {
     private static final String WIKI_DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'";
 
     @Override
-    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException {
         String dateAsText = obtainDateAsText(jsonParser);
         LocalDateTime parsedLocalDateTime = parseDate(dateAsText);
         return parsedLocalDateTime;
