@@ -21,7 +21,7 @@ class WikiPersonalPageDataExtractor implements IPersonalPageDataExtractor {
     private IPersonalPageDataPreparator<WikiSearchResultTO> wikiPersonalPageDataPreparator;
 
     @Autowired
-    public WikiPersonalPageDataExtractor(IWikipediaApiClient wikipediaApiClient, @Qualifier("wikiPersonalPageDataPreparator") IPersonalPageDataPreparator<WikiSearchResultTO> wikiPersonalPageDataPreparator) {
+    WikiPersonalPageDataExtractor(IWikipediaApiClient wikipediaApiClient, @Qualifier("wikiPersonalPageDataPreparator") IPersonalPageDataPreparator<WikiSearchResultTO> wikiPersonalPageDataPreparator) {
         this.wikipediaApiClient = wikipediaApiClient;
         this.wikiPersonalPageDataPreparator = wikiPersonalPageDataPreparator;
     }

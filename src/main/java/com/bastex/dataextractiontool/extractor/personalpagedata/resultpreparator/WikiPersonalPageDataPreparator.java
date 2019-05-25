@@ -24,7 +24,7 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
     private DateUtils dateUtils;
 
     @Autowired
-    public WikiPersonalPageDataPreparator(DateUtils dateUtils) {
+    WikiPersonalPageDataPreparator(DateUtils dateUtils) {
         this.dateUtils = dateUtils;
     }
 
