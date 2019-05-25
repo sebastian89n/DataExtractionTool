@@ -54,9 +54,8 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
     }
 
     private LocalDate obtainYearOfBirth(String snippet) {
-        Matcher matcher = BORN_WITH_YEAR_REGEX_PATTERN.matcher(snippet);
-
         LocalDate birthYear = null;
+        Matcher matcher = BORN_WITH_YEAR_REGEX_PATTERN.matcher(snippet);
 
         if (matcher.find()) {
             String birthYearAsText = matcher.group(1);

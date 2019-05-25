@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Data
 @NoArgsConstructor
@@ -21,7 +22,7 @@ public class PersonalPageDataTO {
         return "PersonalPageDataTO{" +
                 "pageId=" + pageId +
                 ", pageTitle='" + pageTitle + '\'' +
-                ", yearOfBirth=" + yearOfBirth.getYear() +
+                ", yearOfBirth=" + Optional.ofNullable(yearOfBirth).map(LocalDate::getYear).orElse(null) +
                 '}';
     }
 }
