@@ -42,8 +42,7 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
     }
 
     private PersonalPageDataTO convertWikiSeachResultToPersonalPageData(WikiSearchResultTO searchResultTO) {
-        Matcher matcher = BORN_WITH_YEAR_REGEX_PATTERN.matcher(searchResultTO.getSnippet());
-        LocalDate birthYear = obtainYearOfBirth(matcher);
+        LocalDate birthYear = obtainYearOfBirth(searchResultTO.getSnippet());
 
         PersonalPageDataTO personalPageDataTO = PersonalPageDataTO.builder()
                 .yearOfBirth(birthYear)
@@ -54,7 +53,9 @@ class WikiPersonalPageDataPreparator implements IPersonalPageDataPreparator<Wiki
         return personalPageDataTO;
     }
 
-    private LocalDate obtainYearOfBirth(Matcher matcher) {
+    private LocalDate obtainYearOfBirth(String snippet) {
+        Matcher matcher = BORN_WITH_YEAR_REGEX_PATTERN.matcher(snippet);
+
         LocalDate birthYear = null;
 
         if (matcher.find()) {

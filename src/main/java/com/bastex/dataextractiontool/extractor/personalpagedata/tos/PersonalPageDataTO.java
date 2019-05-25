@@ -15,4 +15,13 @@ public class PersonalPageDataTO {
     private Long pageId;
     private String pageTitle;
     private LocalDate yearOfBirth;
+
+    @Override
+    public String toString() {
+        return "PersonalPageDataTO{" +
+                "pageId=" + pageId +
+                ", pageTitle='" + pageTitle + '\'' +
+                ", yearOfBirth=" + yearOfBirth.getYear() +
+                '}';
+    }
 }
