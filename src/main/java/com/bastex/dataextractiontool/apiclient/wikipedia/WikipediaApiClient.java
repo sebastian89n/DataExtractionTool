@@ -7,6 +7,7 @@ import com.bastex.dataextractiontool.apiclient.wikipedia.tos.WikiSearchResultTO;
 import com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider;
 import com.google.common.collect.Lists;
 import org.apache.cxf.jaxrs.client.WebClient;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
@@ -21,11 +22,16 @@ import java.util.Optional;
 @Primary
 @PropertySource("classpath:application.properties")
 class WikipediaApiClient implements IWikipediaApiClient{
-    private static final List<JacksonJaxbJsonProvider> JACKSON_JAXB_JSON_PROVIDERS = Lists.newArrayList(new JacksonJaxbJsonProvider());
+    private List<JacksonJaxbJsonProvider> jacksonJaxbJsonProviders;
 
     // Could have been configured in any other way.
     @Value("${wiki.en.api.address}")
     private String enWikiApiAddress;
+
+    @Autowired
+    public WikipediaApiClient(List<JacksonJaxbJsonProvider> jacksonJaxbJsonProviders) {
+        this.jacksonJaxbJsonProviders = jacksonJaxbJsonProviders;
+    }
 
     @Override
     public Collection<WikiSearchResultTO> performSearchQuery(String searchedText) {
@@ -55,7 +61,7 @@ class WikipediaApiClient implements IWikipediaApiClient{
     }
 
     private WikiQueryResponseTO performSearchQueryWithOffset(String searchedText, Long queryOffset) {
-        WebClient webClient = WebClient.create(enWikiApiAddress, JACKSON_JAXB_JSON_PROVIDERS)
+        WebClient webClient = WebClient.create(enWikiApiAddress, jacksonJaxbJsonProviders)
                 .query("action", "query")
                 .query("list", "search")
                 .query("format", "json")
