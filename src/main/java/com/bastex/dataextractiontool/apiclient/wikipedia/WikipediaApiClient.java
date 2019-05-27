@@ -29,7 +29,7 @@ class WikipediaApiClient implements IWikipediaApiClient{
     private String enWikiApiAddress;
 
     @Autowired
-    public WikipediaApiClient(List<JacksonJaxbJsonProvider> jacksonJaxbJsonProviders) {
+    WikipediaApiClient(List<JacksonJaxbJsonProvider> jacksonJaxbJsonProviders) {
         this.jacksonJaxbJsonProviders = jacksonJaxbJsonProviders;
     }
 
