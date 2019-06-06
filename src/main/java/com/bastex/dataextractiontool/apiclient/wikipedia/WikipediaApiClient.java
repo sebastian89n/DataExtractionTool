@@ -21,7 +21,7 @@ import java.util.Optional;
 @Service
 @Primary
 @PropertySource("classpath:application.properties")
-class WikipediaApiClient implements IWikipediaApiClient{
+class WikipediaApiClient implements IWikipediaApiClient {
     private List<JacksonJaxbJsonProvider> jacksonJaxbJsonProviders;
 
     // Could have been configured in any other way.
@@ -50,8 +50,7 @@ class WikipediaApiClient implements IWikipediaApiClient{
             WikiContinueInfoTO continueInfo = wikiQueryResponseTO.getContinueInfo();
             if (continueInfo != null) {
                 queryOffset = continueInfo.getOffset();
-            } else
-            {
+            } else {
                 stillMoreResultsToFetch = false;
             }
 
